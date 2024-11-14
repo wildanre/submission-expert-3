@@ -1,0 +1,160 @@
+.search-content {
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.search-content input,
+.search-content button {
+  padding: 1rem 0;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search-content input {
+  width: 100%;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.search-content button {
+  width: 30%;
+  background-color: #9c7b5b;
+  color: #eeeae3;
+  border: none;
+  cursor: pointer;
+}
+
+.search-content button:hover {
+  background-color: #79634c;
+}
+
+#searchResults {
+  padding: 20px;
+  background-color: #ffffff00;
+  border-radius: 8px;
+}
+
+.search_restaurant-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  gap: 1rem;
+}
+
+.search_restaurant-card__image {
+  flex: 0 0 auto;
+}
+
+.search_restaurant-image {
+  height: 100%;
+  max-width: 12rem;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.search_restaurant-card__info {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.search_restaurant-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.search_restaurant-description {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.search_restaurant-details {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center; 
+}
+.search_restaurant-rating {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+
+}
+.material-symbols--star {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f5cc00' d='m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z'/%3E%3C/svg%3E");
+}
+.search-mdi-location {
+  display: flex;
+  gap: 1rem;
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fd4949' d='M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7'/%3E%3C/svg%3E");
+}
+
+.search_restaurant-location {
+  display: flex;
+  align-items: center;
+
+}
+
+.search_restaurant-rating,
+.search_restaurant-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 600px) {
+
+  .search_restaurant-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search_restaurant-card__image {
+    margin-bottom: 1rem;
+  }
+
+  .search_restaurant-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .search_restaurant-name,
+  .search_restaurant-description,
+  .search_restaurant-rating,
+  .search_restaurant-location {
+    text-align: center;
+  }
+
+  .search-content input,
+  .search-content button {
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .search-content button {
+    width: 100%;
+  }
+}
