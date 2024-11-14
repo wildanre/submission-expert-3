@@ -55,7 +55,7 @@ module.exports = {
           quality: 50,
         }),
         imageminPngquant({
-          quality: [0.5, 0.8],
+          quality: [50-80],
         }),
       ],
     }),
