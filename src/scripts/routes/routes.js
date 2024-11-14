@@ -7,7 +7,7 @@ const routes = {
   '/': ContentItem,
   '/search': Search,
   '/restaurant/:id': Detail,
-  '/favorites': Favorite,
+  '/Favorite': Favorite,
 };
 
 export default routes;
