@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-undef */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,12 +11,27 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 
 module.exports = {
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin()],
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true,
+            drop_debugger: true,
+          },
+          format: {
+            comments: false, // Menghapus komentar
+          },
+        },
+        extractComments: false, // Tidak membuat file LICENSE
+      }),
+      new CssMinimizerPlugin(),
+    ],
   },
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -52,10 +68,10 @@ module.exports = {
     new ImageminPlugin({
       plugins: [
         imageminMozjpeg({
-          quality: 50,
+          quality: 40,
         }),
         imageminPngquant({
-          quality: [50-80],
+          quality: [40 - 70],
         }),
       ],
     }),
