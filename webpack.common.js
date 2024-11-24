@@ -132,6 +132,6 @@ module.exports = {
       logo: './src/public/images/logo/amba.svg',
       mode: 'webapp',
     }),
-    new BundleAnalyzerPlugin(),
+       new BundleAnalyzerPlugin(),
   ],
 };

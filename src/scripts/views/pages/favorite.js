@@ -7,6 +7,15 @@ const favorite = {
       <section class="content">
         <div class="explore">
           <h1 class="explore-label">Daftar Restoran Favorit</h1>
+                    <!-- Pencarian Restoran -->
+          <div id="restaurant-search-container">
+            <input id="query" type="text" placeholder="Cari restoran favorit...">
+            <div class="restaurant-result-container">
+              <ul class="restaurants" id="restaurant-search-results">
+                <!-- Hasil pencarian akan muncul di sini -->
+              </ul>
+            </div>
+          </div>
           <div class="posts">
             ${restaurants.map((restaurant) => `
               <div class="restaurant-item" tabindex="0">

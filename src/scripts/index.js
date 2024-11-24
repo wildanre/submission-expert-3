@@ -5,6 +5,7 @@ import swRegister from './utils/sw-register';
 import App from './views/app';
 import SearchBar from './components/search-bar';
 
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new App({
     content: document.querySelector('#mainContent'),

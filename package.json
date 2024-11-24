@@ -1,7 +1,6 @@
 {
   "name": "restaurant-apps",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
@@ -9,6 +8,8 @@
     "build-image": "node sharp.js",
     "serve": "http-server dist --port 9000",
     "test": "jest",
+    "e2e": "codeceptjs run --steps",
+    "e2e-start": "npx cypress open",
     "type": "module",
     "test:watch": "jest --watchAll"
   },
@@ -21,12 +22,14 @@
     "@eslint/js": "^9.14.0",
     "@jest/globals": "^29.6.1",
     "@types/jest": "^29.5.3",
-    "babel-jest": "^29.6.1",
+    "babel-jest": "^29.7.0",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
+    "codeceptjs": "^3.6.7",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.11.0",
     "css-minimizer-webpack-plugin": "^7.0.0",
+    "cypress": "^13.16.0",
     "eslint": "^9.14.0",
     "eslint-config-dicodingacademy": "^0.9.4",
     "fake-indexeddb": "^4.0.2",
@@ -39,13 +42,16 @@
     "imagemin-webpack-plugin": "^2.1.5",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.6.1",
+    "jest-mock": "^29.7.0",
     "node-sass": "^9.0.0",
-    "puppeteer": "^23.8.0",
+    "playwright": "^1.49.0",
+    "puppeteer": "^23.9.0",
     "sass": "^1.80.4",
     "sass-loader": "^16.0.2",
     "sharp": "^0.33.5",
     "style-loader": "^3.3.4",
     "terser-webpack-plugin": "^5.3.10",
+    "webdriverio": "^9.3.0",
     "webpack": "^5.96.1",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
@@ -55,7 +61,6 @@
     "workbox-webpack-plugin": "^7.3.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.6.0",
     "dotenv": "^16.4.5",
     "favicons": "^7.2.0",
     "idb": "^8.0.0",
@@ -64,5 +69,9 @@
     "workbox-routing": "^7.3.0",
     "workbox-strategies": "^7.3.0",
     "workbox-window": "^7.3.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "description": ""
 }

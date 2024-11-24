@@ -3,19 +3,18 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const target = path.resolve(__dirname, 'src/public/images');
-const destination = path.resolve(__dirname, 'dist/images');
+const target = path.resolve(__dirname, 'src/public/images/heros');
+const destination = path.resolve(__dirname, 'dist/images/heros');
 
 if (!fs.existsSync(destination)) {
   fs.mkdirSync(destination);
 }
 
 fs.readdirSync(target)
-  .filter((image) => /\.(jpe?g|png|webp|tiff)$/i.test(image)) // hanya gambar yang didukung
   .forEach((image) => {
     // mengubah ukuran gambar dengan lebar 800px, dengan prefix -large.jpg
     sharp(`${target}/${image}`)
-      .resize(800)
+      .resize(1350)
       .toFile(path.resolve(
         __dirname,
         `${destination}/${image.split('.').slice(0, -1).join('.')}-large.jpg`),

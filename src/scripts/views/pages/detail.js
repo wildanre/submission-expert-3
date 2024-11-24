@@ -1,7 +1,7 @@
 import { getDetailOfRestaurant, addReview } from '../../data/restaurant-api';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
-import 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
+
 const Detail = {
   async render() {
     const url = window.location.hash.slice(1).toLowerCase();
@@ -13,7 +13,7 @@ const Detail = {
         <h2>${restaurant.name}</h2>
         <div class="detail-grid">
           <div class="image-container">
-            <class="lazyload" data-src="https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}" alt="${restaurant.name}">
+            <img src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}" alt="${restaurant.name}">
           </div>
           <div class="info-container">
             <p><strong>City:</strong> ${restaurant.city}</p>
@@ -125,7 +125,9 @@ const Detail = {
     });
 
     const likeButtonContainer = document.getElementById('likeButtonContainer');
-    LikeButtonInitiator.init({
+    LikeButtonPresenter.init({
+      favoriteRestaurant: FavoriteRestaurantIdb,
+      LikeButtonPresenter,
       likeButtonContainer,
       restaurant,
     });
