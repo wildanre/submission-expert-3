@@ -27,7 +27,9 @@ const ContentItem = {
                       <h2>
                         <a href="#/restaurant/${restaurant.id}">${restaurant.name}</a>
                       </h2>
-                      <p>${restaurant.description}</p>
+                      <p>${restaurant.description.length > 100
+    ? `${restaurant.description.slice(0, 150)}...`
+    : restaurant.description}</p>
                     </div>
                   </div>
                 `).join('')}
