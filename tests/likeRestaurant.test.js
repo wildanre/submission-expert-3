@@ -2,51 +2,51 @@ import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
 import * as TestFactories from './helpers/testFactories';
 
 describe('Menandai Restoran sebagai Favorit', () => {
-    const addLikeButtonContainer = () => {
-        document.body.innerHTML = '<div id="likeButtonContainer"></div>';
-    }
+  const addLikeButtonContainer = () => {
+    document.body.innerHTML = '<div id="likeButtonContainer"></div>';
+  };
 
-    beforeEach(() => {
-        addLikeButtonContainer();
-    });
+  beforeEach(() => {
+    addLikeButtonContainer();
+  });
 
-    it('harus menampilkan tombol suka ketika restoran belum pernah disukai sebelumnya', async () => {
-        await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
+  it('harus menampilkan tombol suka ketika restoran belum pernah disukai sebelumnya', async () => {
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
-        expect(document.querySelector('[aria-label="like this restaurant"]')).toBeTruthy();
-    });
+    expect(document.querySelector('[aria-label="like this restaurant"]')).toBeTruthy();
+  });
 
-    it('harusnya tidak menampilkan tombol tidak suka ketika restoran belum pernah disukai sebelumnya', async () => {
-        await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
-        expect(document.querySelector('[aria-label="unlike this restaurant"]')).toBeFalsy();
-    });
+  it('harusnya tidak menampilkan tombol tidak suka ketika restoran belum pernah disukai sebelumnya', async () => {
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
+    expect(document.querySelector('[aria-label="unlike this restaurant"]')).toBeFalsy();
+  });
 
-    it('harus bisa menyukai restoran', async () => {
-        await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
-        document.querySelector('#likeButton').dispatchEvent(new Event('click'));
+  it('harus bisa menyukai restoran', async () => {
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
+    document.querySelector('#likeButton').dispatchEvent(new Event('click'));
 
-        const restaurant = await FavoriteRestaurantIdb.getRestaurant(1);
-        expect(restaurant).toEqual({ id: 1 });
+    const restaurant = await FavoriteRestaurantIdb.getRestaurant(1);
+    expect(restaurant).toEqual({ id: 1 });
 
-        await FavoriteRestaurantIdb.deleteRestaurant(1);
-    });
+    await FavoriteRestaurantIdb.deleteRestaurant(1);
+  });
 
-    it('seharusnya tidak menambahkan restoran lagi ketika sudah disukai', async () => {
-        await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
+  it('seharusnya tidak menambahkan restoran lagi ketika sudah disukai', async () => {
+    await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
-        await FavoriteRestaurantIdb.putRestaurant({ id: 1 });
+    await FavoriteRestaurantIdb.putRestaurant({ id: 1 });
 
-        document.querySelector('#likeButton').dispatchEvent(new Event('click'));
+    document.querySelector('#likeButton').dispatchEvent(new Event('click'));
 
-        expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
-        await FavoriteRestaurantIdb.deleteRestaurant(1);
-    });
+    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
+    await FavoriteRestaurantIdb.deleteRestaurant(1);
+  });
 
-    it('seharusnya tidak menambahkan film ketika tidak memiliki id', async () => {
-        await TestFactories.createLikeButtonPresenterWithRestaurant({});
+  it('seharusnya tidak menambahkan film ketika tidak memiliki id', async () => {
+    await TestFactories.createLikeButtonPresenterWithRestaurant({});
 
-        document.querySelector('#likeButton').dispatchEvent(new Event('click'));
-        expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
-    });
+    document.querySelector('#likeButton').dispatchEvent(new Event('click'));
+    expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
+  });
 
 });

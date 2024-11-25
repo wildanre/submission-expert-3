@@ -10,6 +10,7 @@
     "test": "jest",
     "e2e": "codeceptjs run --steps",
     "e2e-start": "npx cypress open",
+    "lint": "eslint src",
     "type": "module",
     "test:watch": "jest --watchAll"
   },

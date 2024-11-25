@@ -38,7 +38,7 @@ const LikeButtonPresenter = {
     const likeButton = document.getElementById('likeButton');
     likeButton.addEventListener('click', async () => {
       if (!this._restaurant.id) {
-        return; 
+        return;
       }
       await this._favoriteRestaurants.putRestaurant(this._restaurant);
       this._renderLiked();

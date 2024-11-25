@@ -21,4 +21,4 @@ exports.config = {
     I: './steps_file.js'
   },
   name: 'submission-expert-3'
-}
+};
