@@ -8,8 +8,8 @@ setCommonPlugins();
 
 /** @type {CodeceptJS.MainConfig} */
 exports.config = {
-  tests: './*_test.js',
-  output: './output',
+  tests: 'e2e/**/*.test.js',
+  output: 'e2e/output',
   helpers: {
     Playwright: {
       browser: 'chromium',
