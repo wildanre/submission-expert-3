@@ -4,7 +4,7 @@ class NavBar extends HTMLElement {
     this.innerHTML = `
       <nav>
         <div class="nav-title">
-          <img rel="preload" src="../../images/logo/logo.png" alt="Logo" class="logo" height="50">
+          <img rel="preload" src="../../images/logo/logo.png" alt="Logo" class="logo" width="91,5" height="50">
         </div>
         <button class="hamburger">&#9776;</button>
         <ul class="nav-list">
