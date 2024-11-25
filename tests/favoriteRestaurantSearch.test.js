@@ -116,9 +116,26 @@ describe('Searching restaurants', () => {
 				return [];
 			});
 
-
 			searchRestaurants('restaurant a');
-			(10000);
+		});
+
+		it('should show - when the restaurant returned does not contain a title', (done) => {
+			document.getElementById('restaurant-search-container')
+				.addEventListener('restaurants:searched:updated', () => {
+					const restaurantTitles = document.querySelectorAll('.restaurant__title');
+					expect(restaurantTitles.item(0).textContent)
+						.toEqual('-');
+					done();
+				});
+
+			favoritesRestaurants.searchRestaurants.mockImplementation((query) => {
+				if (query === 'film a') {
+					return [{ id: 444 }];
+				}
+				return [];
+			});
+
+			searchRestaurants('film a');
 		});
 	});
 
