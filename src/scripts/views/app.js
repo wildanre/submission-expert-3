@@ -74,7 +74,7 @@ class App {
                         <span class="search_restaurant-location">  <span class="search-mdi-location"></span>
                            ${restaurant.city}</span>
                     </div>
-                    <button class="search_view-details-btn" data-id="${restaurant.id}">Lihat</button>
+                    <button class="search_view-details-btn" id="search_view-details-btn" data-id="${restaurant.id}">Lihat</button>
                 </div>
             `;
       searchResultsContainer.appendChild(restaurantElement);

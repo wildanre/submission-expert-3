@@ -8,7 +8,8 @@ const favorite = {
         <div class="explore">
           <h1 class="explore-label">Daftar Restoran Favorit</h1>
                     <!-- Pencarian Restoran -->
-          <div id="restaurant-search-container">
+
+          <div id="restaurant-search-container" style="display: none;">
             <input id="query" type="text" placeholder="Cari restoran favorit...">
             <div class="restaurant-result-container">
               <ul class="restaurants" id="restaurant-search-results">

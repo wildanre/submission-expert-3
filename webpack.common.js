@@ -9,7 +9,7 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
@@ -132,6 +132,6 @@ module.exports = {
       logo: './src/public/images/logo/amba.svg',
       mode: 'webapp',
     }),
-       new BundleAnalyzerPlugin(),
+    //new BundleAnalyzerPlugin(),
   ],
 };

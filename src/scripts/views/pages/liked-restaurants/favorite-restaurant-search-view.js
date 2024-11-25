@@ -1,6 +1,6 @@
 class FavoriteRestaurantSearchView {
-	getTemplate() {
-		return `
+  getTemplate() {
+    return `
       <div id="restaurant-search-container">
         <input id="query" type="text">
 		
@@ -9,36 +9,34 @@ class FavoriteRestaurantSearchView {
         </div>
       </div>
     `;
-	}
+  }
 
+  runWhenUserIsSearching(callback) {
+    document.getElementById('query').addEventListener('change', (event) => {
+      callback(event.target.value);
+    });
+  }
 
-	runWhenUserIsSearching(callback) {
-		document.getElementById('query').addEventListener('change', (event) => {
-			callback(event.target.value);
-		});
-	}
-
-	showRestaurants(restaurants) {
-		let html;
-		if (restaurants.length > 0) {
-			html = restaurants.reduce(
-				(carry, restaurant) => carry.concat(`
+  showRestaurants(restaurants) {
+    let html;
+    if (restaurants.length > 0) {
+      html = restaurants.reduce(
+        (carry, restaurant) => carry.concat(`
 			  <li class="restaurant">
 				<span class="restaurant__title">${restaurant.title || '-'}</span>
 			  </li>
 			`),
-				'',
-			);
-		} else {
-			html = '<div class="restaurants__not__found">Film tidak ditemukan</div>';
-		}
-		document.querySelector('.restaurants').innerHTML = html;
+        '',
+      );
+    } else {
+      html = '<div class="restaurants__not__found">Film tidak ditemukan</div>';
+    }
+    document.querySelector('.restaurants').innerHTML = html;
 
-		// Pastikan event ini dipicu
-		document
-			.getElementById('restaurant-search-container')
-			.dispatchEvent(new Event('restaurants:searched:updated'));
-	}
+    document
+      .getElementById('restaurant-search-container')
+      .dispatchEvent(new Event('restaurants:searched:updated'));
+  }
 
 }
 

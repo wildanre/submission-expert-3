@@ -8,8 +8,8 @@ setCommonPlugins();
 
 /** @type {CodeceptJS.MainConfig} */
 exports.config = {
-  tests: './*_test.js',
-  output: './output',
+  tests: 'e2e/**/*.test.js',
+  output: 'e2e/output',
   helpers: {
     Playwright: {
       browser: 'chromium',
@@ -21,4 +21,4 @@ exports.config = {
     I: './steps_file.js'
   },
   name: 'submission-expert-3'
-}
+};
