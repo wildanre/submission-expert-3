@@ -1,33 +1,64 @@
 class FavoriteRestaurantSearchPresenter {
-    constructor({ favoriteRestaurants }) {
-        this._listenToSearchRequestByUser();
+    constructor({ favoriteRestaurants, view }) {
         this._favoriteRestaurants = favoriteRestaurants;
+        this._view = view;
+        this._latestQuery = '';
+
+        this._listenToSearchRequestByUser();
     }
 
     _listenToSearchRequestByUser() {
-        this._queryElement = document.getElementById('query');
-        this._queryElement.addEventListener('change', (event) => {
-            this._searchRestaurants(event.target.value);
+        // Make sure view is properly calling this method when user is typing
+        this._view.runWhenUserIsSearching((latestQuery) => {
+            this._latestQuery = latestQuery.trim();
+            this._searchRestaurants(latestQuery);
         });
     }
 
-    _searchRestaurants(latestQuery) {
-        this._latestQuery = latestQuery;
-        this._favoriteRestaurants.searchRestaurants(this.latestQuery);
+    async _searchRestaurants(query) {
+        const trimmedQuery = query.trim();
+
+        let foundRestaurants = [];
+
+        try {
+            if (trimmedQuery.length > 0) {
+                foundRestaurants = await this._favoriteRestaurants.searchRestaurants(trimmedQuery);
+            } else {
+                foundRestaurants = await this._favoriteRestaurants.getAllRestaurants();
+            }
+
+            // Show the results
+            this._showFoundRestaurants(foundRestaurants);
+        } catch (error) {
+            console.error('Error while searching restaurants:', error);
+        }
     }
 
     _showFoundRestaurants(restaurants) {
-        const html = restaurants.reduce(
-            (carry, restaurant) => carry.concat(`
-            <li class="restaurant">
-              <span class="restaurant__title">${restaurant.title || '-'}</span>
-            </li>
-          `),
-            '',
-        );
+        const restaurantContainer = document.getElementById('restaurant-search-container');
+        restaurantContainer.innerHTML = ''; // Clear previous search results
 
-        document.querySelector('.restaurants').innerHTML = html;
+        // If no restaurants are found, you might want to display a message
+        if (restaurants.length === 0) {
+            const noResultsMessage = document.createElement('div');
+            noResultsMessage.classList.add('restaurants__not__found');
+            noResultsMessage.textContent = 'No restaurants found.';
+            restaurantContainer.appendChild(noResultsMessage);
+        }
+
+        // Display found restaurants
+        restaurants.forEach((restaurant) => {
+            const restaurantElement = document.createElement('div');
+            restaurantElement.classList.add('restaurant__title');
+            restaurantElement.textContent = restaurant.title || '-';
+            restaurantContainer.appendChild(restaurantElement);
+        });
+
+        // Dispatch event when the list has been updated
+        const event = new CustomEvent('restaurants:searched:updated');
+        restaurantContainer.dispatchEvent(event);
     }
+
     get latestQuery() {
         return this._latestQuery;
     }

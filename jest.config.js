@@ -9,8 +9,8 @@ const config = {
     //'<rootDir>/tests/unlikeRestaurant.test.js',
     //'<rootDir>/tests/likeRestaurant.test.js',
     //'<rootDir>/tests/favoriteRestaurantIdb.test.js',
-    '<rootDir>/tests/favoriteRestaurantSearch.test.js',
-    //'**/tests/**/*.test.[jt]s?(x)',
+    //'<rootDir>/tests/favoriteRestaurantSearch.test.js',
+    '**/tests/**/*.test.[jt]s?(x)',
   ],
 
   // The paths to modules that run some code to configure or set up the testing environment before each test

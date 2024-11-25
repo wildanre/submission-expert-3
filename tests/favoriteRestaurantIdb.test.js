@@ -10,3 +10,5 @@ describe('Favorite Restaurant Idb Contract Test Implementation', () => {
    
     itActsAsFavoriteRestaurantModel(FavoriteRestaurantIdb);
   });
+
+  
