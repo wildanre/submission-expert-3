@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js && node sharp.js",
     "build-image": "node sharp.js",
     "serve": "http-server dist --port 9000",
     "test": "jest",
@@ -30,7 +30,6 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.11.0",
     "css-minimizer-webpack-plugin": "^7.0.0",
-    "cypress": "^13.16.0",
     "eslint": "^9.14.0",
     "eslint-config-dicodingacademy": "^0.9.4",
     "fake-indexeddb": "^4.0.2",
@@ -64,9 +63,11 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "favicons": "^7.2.0",
+    "glob": "^11.0.0",
     "idb": "^8.0.0",
     "lazysizes": "^5.3.2",
     "regenerator-runtime": "^0.14.1",
+    "uuid": "^11.0.3",
     "workbox-routing": "^7.3.0",
     "workbox-strategies": "^7.3.0",
     "workbox-window": "^7.3.0"
