@@ -11,7 +11,6 @@ class FavoriteRestaurantSearchView {
     `;
 	}
 
-
 	runWhenUserIsSearching(callback) {
 		document.getElementById('query').addEventListener('change', (event) => {
 			callback(event.target.value);
@@ -34,7 +33,6 @@ class FavoriteRestaurantSearchView {
 		}
 		document.querySelector('.restaurants').innerHTML = html;
 
-		// Pastikan event ini dipicu
 		document
 			.getElementById('restaurant-search-container')
 			.dispatchEvent(new Event('restaurants:searched:updated'));
