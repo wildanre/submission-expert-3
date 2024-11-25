@@ -1,4 +1,6 @@
 node_modules
+package-lock.json
+.vscode
 submission-expert-3.zip
 .vercel
-vercel.json
+vercel.json 
